@@ -1,0 +1,20 @@
+{
+	"name": "bf-online-service",
+	"version": "0.1.0",
+	"description": "Example block written with ESNext standard and JSX support – build step required.",
+	"author": "The WordPress Contributors",
+	"license": "GPL-2.0-or-later",
+	"main": "build/index.js",
+	"scripts": {
+		"build": "wp-scripts build",
+		"start": "wp-scripts start"
+	},
+	"dependencies": {
+		"@wordpress/block-editor": "^5.2.10",
+		"@wordpress/blocks": "^7.0.6",
+		"@wordpress/i18n": "^3.18.0"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^13.0.3"
+	}
+}
