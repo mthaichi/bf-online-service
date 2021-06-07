@@ -5,18 +5,12 @@
  * @package bf-online-service
  */
 
+namespace BF_Online_Service;
+
 /**
  * Service_model class
  */
 class Service_Model {
-
-	/**
-	 * ユーザー情報
-	 *
-	 * @var object
-	 */
-	public $attrbutes;
-
 	/**
 	 * 検索クエリ
 	 *
@@ -40,6 +34,13 @@ class Service_Model {
 	private $target_date;
 
 	/**
+	 * 読み込まれたデータ
+	 *
+	 * @var object
+	 */
+	private $data;
+
+	/**
 	 * コンストラクタ
 	 */
 	public function __construct() {
@@ -52,7 +53,21 @@ class Service_Model {
 	 * @return void
 	 */
 	public function fetch() {
-
+		$posts = get_posts( $this->query );
+		if ( is_array( $posts ) && count( $posts ) > 0 ) {
+			$this->data = $posts[0];
+		} else {
+			$this->data = (object) array(
+				'id'            => null,
+				'service_date'  => '',
+				'message_title' => 'データがありません',
+				'youtube_url'   => '',
+				'message_pdf'   => '',
+				'shuho_pdf'     => '',
+				'shuho_image_1' => '',
+				'shuho_image_2' => '',
+			);
+		}
 	}
 
 	/**
@@ -82,7 +97,16 @@ class Service_Model {
 		return $this->target_date;
 	}
 
-
-
-
+	/**
+	 * データの取得
+	 *
+	 * @param string $key 取得したいキー.
+	 * @return mixed
+	 */
+	public function get( $key ) {
+		if ( property_exists( $this->data, $key ) ) {
+			return $this->data->{$key};
+		}
+		return null;
+	}
 }

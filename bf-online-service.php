@@ -26,17 +26,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 class BF_Online_Service {
 
 	/**
+	 * サービスモデル
+	 *
+	 * @var BF_Online_Service\Service_Model
+	 */
+	private $services;
+
+	/**
 	 * __construct
 	 */
 	public function __construct() {
 		require_once BF_ONLINE_SERVICE_PLUGIN_PATH . '/includes/class-custom-fields-services.php';
 		require_once BF_ONLINE_SERVICE_PLUGIN_PATH . '/includes/custom-field-builder/custom-field-builder.php';
 		require_once BF_ONLINE_SERVICE_PLUGIN_PATH . '/includes/class-post-type-service.php';
+		require_once BF_ONLINE_SERVICE_PLUGIN_PATH . '/includes/class-service-model.php';
 
 		global $custom_field_builder_url;
 		$custom_field_builder_url = BF_ONLINE_SERVICE_PLUGIN_URL . '/includes/custom-field-builder/';
 		BF_Online_Service\Custom_Fields_Services::init();
 		BF_Online_Service\Post_Type_Service::init();
+
+		$this->services = new BF_Online_Service\Service_Model();
+
 	}
 }
 
