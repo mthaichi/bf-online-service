@@ -1,0 +1,12 @@
+{
+    "require-dev": {
+        "wp-coding-standards/wpcs": "^2.3"
+    },
+    "report": [
+        "phpcs -sq --no-colors --report=source --report-diff=./report-diff.log --report-full=./report-full.log --standard=phpcs.xml"
+    ],
+    "convert": [
+        "phpcbf --standard=./phpcs.xml"
+    ]
+}
+

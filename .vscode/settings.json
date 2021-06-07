@@ -1,0 +1,27 @@
+{
+    "phpcs.standard": "WordPress",
+    "phpcs.executablePath": "/Users/taichi/.composer/vendor/bin/phpcs",
+    "editor.insertSpaces": false,
+    "editor.detectIndentation": false,
+	"phpcbf.standard": "WordPress",
+	"phpcbf.executablePath": "/Users/taichi/.composer/vendor/bin/phpcbf",
+	"phpcbf.onsave": true,
+	"[html]": {
+		"editor.formatOnSave": true,
+	  },
+	  "[css]": {
+		"editor.formatOnSave": true,
+	  },
+	  "[scss]": {
+		"editor.formatOnSave": true,
+	  },
+	  "[javascript]": {
+		"editor.formatOnSave": true,
+	  },
+	  "[json]": {
+		"editor.formatOnSave": true,
+	  },
+	  "[php]": {
+		"editor.formatOnSave": false,
+	  },
+}
