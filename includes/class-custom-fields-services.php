@@ -64,6 +64,7 @@ class Custom_Fields_Services {
 	 */
 	public static function init() {
 		add_action( 'admin_menu', array( __CLASS__, 'add_metabox' ), 10, 2 );
+		add_action( 'save_post', array( __CLASS__, 'save_custom_fields' ), 10, 2 );
 	}
 
 	/**
@@ -84,7 +85,7 @@ class Custom_Fields_Services {
 	}
 
 	/**
-	 * Undocumented function
+	 * フィームの表示
 	 *
 	 * @return void
 	 */
@@ -95,5 +96,16 @@ class Custom_Fields_Services {
 		$before_custom_fields = '';
 		VK_Custom_Field_Builder::form_table( $custom_fields, $before_custom_fields );
 	}
+
+	/**
+	 * 入力値の保存
+	 *
+	 * @return void
+	 */
+	public static function save_custom_fields() {
+		$custom_fields = Custom_Fields_Services::get_fields();
+		VK_Custom_Field_Builder::save_cf_value( $custom_fields );
+	}
+
 
 }

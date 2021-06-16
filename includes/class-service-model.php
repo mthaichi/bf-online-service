@@ -43,8 +43,9 @@ class Service_Model {
 	/**
 	 * コンストラクタ
 	 */
-	public function __construct() {
-		$this->fetch();
+	public function __construct( $date ) {
+		$this->set_target_date( $date );
+		$this->load();
 	}
 
 	/**
@@ -52,7 +53,7 @@ class Service_Model {
 	 *
 	 * @return void
 	 */
-	public function fetch() {
+	public function load() {
 		$posts = get_posts( $this->query );
 		if ( is_array( $posts ) && count( $posts ) > 0 ) {
 			$this->data = $posts[0];
@@ -77,8 +78,7 @@ class Service_Model {
 	 * @return void
 	 */
 	public function set_target_date( $date ) {
-		$this->target_date = date( 'Y/m/d', strtotime( $date ) ); // phpcs:ignore
-		if ( '' !== $date ) {
+		if ( $date ) {
 			$this->query['meta_query'] = array(
 				'key'     => 'service_date',
 				'value'   => date( 'Y/m/d', strtotime( $date ) ), // phpcs:ignore
